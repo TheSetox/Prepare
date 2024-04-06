@@ -11,53 +11,73 @@ import androidx.compose.runtime.compositionLocalOf
 private val LocalPreviewMode: ProvidableCompositionLocal<Boolean> = compositionLocalOf { false }
 
 /**
- * Used for Screen level composable.
+ * A utility composable for preparing and loading composable.
+ *
+ * This composable facilitates the organization of logic for preview execution, data preparation,
+ * and loading of a specific composable.
+ *
+ *
+ * ### Example Usage:
+ * ```
+ *     Prepare(
+ *         preview = {
+ *             state = mutableStateOf("For preview")
+ *         },
+ *         data = {
+ *             val viewModel = MVISampleViewModel()
+ *             state = viewModel.state.collectAsState()
+ *             doAction = { viewModel.doAction(it) }
+ *         },
+ *         screen = {
+ *             doAction(SampleAction.Error)
+ *             doAction(SampleAction.SaveString)
+ *             doAction(SampleAction.UpdateString)
+ *             Surface(
+ *                 modifier = Modifier.fillMaxSize(),
+ *                 color = MaterialTheme.colorScheme.background
+ *             ) {
+ *                 Greeting(state.value)
+ *             }
+ *         }
+ *     )
+ * ```
+ *
+ * @param preview A lambda to execute preview-specific logic. It's triggered only when the
+ * PreparePreview composable is used. **(Optional)**
+ * @param data A lambda to execute data preparation logic. It's triggered when
+ * PreparePreview is not called in the composable. **(Optional)**
+ * @param dialog A lambda to separate composable components related to dialog handling.
+ * It's expected to contain composable components. **(Optional)**
+ * @param screen The main composable for the app level.
+ *
  */
 @Composable
-fun PrepareScreen(
-    onPreview: () -> Unit = {},
-    prepareData: @Composable () -> Unit = {},
-    onDialog: @Composable () -> Unit = {},
-    loadScreen: @Composable () -> Unit,
+fun Prepare(
+    preview: () -> Unit = {},
+    data: @Composable () -> Unit = {},
+    dialog: @Composable () -> Unit = {},
+    screen: @Composable () -> Unit,
 ) {
-    if (LocalPreviewMode.current) onPreview() else prepareData()
+    if (LocalPreviewMode.current) preview() else data()
 
-    loadScreen()
-    onDialog()
+    screen()
+    dialog()
 }
 
 /**
- * Used for App level composable.
- */
-@Composable
-fun PrepareApp(
-    onPreview: () -> Unit = {},
-    prepareData: @Composable () -> Unit = {},
-    onDialog: @Composable () -> Unit = {},
-    loadScreen: @Composable () -> Unit,
-) {
-    if (LocalPreviewMode.current) onPreview() else prepareData()
-
-    loadScreen()
-    onDialog()
-}
-
-/**
- * Used for composable level composable.
- */
-@Composable
-fun PrepareComposable(
-    onPreview: () -> Unit = {},
-    prepareData: @Composable () -> Unit = {},
-    loadScreen: @Composable () -> Unit,
-) {
-    if (LocalPreviewMode.current) onPreview() else prepareData()
-
-    loadScreen()
-}
-
-/**
- * Used for composable preview.
+ * A utility composable for previewing other composable within Compose preview environment.
+ *
+ * This composable sets up the environment for preview mode and executes the provided composablePreview.
+ *
+ * ### Example Usage:
+ * ```
+ * PreparePreview {
+ *     SampleComposable()
+ * }
+ * ```
+ *
+ * @param composablePreview The composable to be previewed.
+ *
  */
 @Composable
 fun PreparePreview(composablePreview: @Composable () -> Unit) {

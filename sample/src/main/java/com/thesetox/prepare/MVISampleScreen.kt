@@ -20,16 +20,16 @@ fun SampleMVIScreen() {
     var state: State<String> = rememberSaveable { mutableStateOf("") }
     var doAction: (SampleAction) -> Unit = {}
 
-    PrepareScreen(
-        onPreview = {
+    Prepare(
+        preview = {
             state = mutableStateOf("For preview")
         },
-        prepareData = {
+        data = {
             val viewModel = MVISampleViewModel()
             state = viewModel.state.collectAsState()
             doAction = { viewModel.doAction(it) }
         },
-        loadScreen = {
+        screen = {
             doAction(SampleAction.Error)
             doAction(SampleAction.SaveString)
             doAction(SampleAction.UpdateString)

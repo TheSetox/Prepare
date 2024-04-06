@@ -23,18 +23,18 @@ fun SampleMVVMScreen() {
     var saveString: () -> Unit = {}
     var errorString: () -> Unit = {}
 
-    PrepareScreen(
-        onPreview = {
+    Prepare(
+        preview = {
             state = mutableStateOf("For preview")
         },
-        prepareData = {
+        data = {
             val viewModel = MVVMSampleViewModel()
             state = viewModel.state.collectAsState()
             updateString = { viewModel.updateString() }
             saveString = { viewModel.saveString() }
             errorString = { viewModel.errorString() }
         },
-        loadScreen = {
+        screen = {
             updateString()
             saveString()
             errorString()

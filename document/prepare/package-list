@@ -1,0 +1,7 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.thesetox.prepare////PointingToDeclaration/prepare/com.thesetox.prepare/index.html
+$dokka.location:com.thesetox.prepare//Prepare/#kotlin.Function0[kotlin.Unit]#kotlin.Function0[kotlin.Unit]#kotlin.Function0[kotlin.Unit]#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/prepare/com.thesetox.prepare/-prepare.html
+$dokka.location:com.thesetox.prepare//PreparePreview/#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/prepare/com.thesetox.prepare/-prepare-preview.html
+com.thesetox.prepare
+

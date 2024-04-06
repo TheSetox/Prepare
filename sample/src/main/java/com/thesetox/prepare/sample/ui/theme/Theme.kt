@@ -1,4 +1,4 @@
-package com.thesetox.prepare.ui.theme
+package com.thesetox.prepare.sample.ui.theme
 
 import android.app.Activity
 import android.os.Build

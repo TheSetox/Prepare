@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.thesetox.prepare"
-    compileSdk = 34
+    namespace = "com.thesetox.prepare.sample"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.thesetox.prepare"
-        minSdk = 24
-        targetSdk = 34
+        applicationId = "com.thesetox.prepare.sample"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.prepare.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -59,7 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(project(":prepare"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

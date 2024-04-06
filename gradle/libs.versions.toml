@@ -9,6 +9,11 @@ lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2024.03.00"
 dokka = "1.9.20"
+prepare = "1.0.0"
+compose-plugin = "1.6.1"
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -26,10 +31,14 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 dokka = { group = "org.jetbrains.dokka", name = "android-documentation-plugin", version.ref = "dokka" }
+prepare-core = { group = "com.thesetox.prepare", name = "core", version.ref = "prepare" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 dokkaPlugin = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 

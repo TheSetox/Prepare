@@ -1,4 +1,4 @@
-package com.thesetox.prepare
+package com.thesetox.prepare.sample
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

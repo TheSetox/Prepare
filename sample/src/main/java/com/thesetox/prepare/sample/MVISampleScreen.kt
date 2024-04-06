@@ -1,4 +1,4 @@
-package com.thesetox.prepare
+package com.thesetox.prepare.sample
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -10,6 +10,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.thesetox.prepare.Prepare
+import com.thesetox.prepare.PreparePreview
 
 @Preview(showBackground = true)
 @Composable

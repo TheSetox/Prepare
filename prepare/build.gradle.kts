@@ -32,15 +32,13 @@ android {
 
 publishing {
     publications {
-        publications {
-            register<MavenPublication>("release") {
-                groupId = "com.thesetox.prepare"
-                artifactId = "core"
-                version = "1.0.0"
+        register<MavenPublication>("release") {
+            groupId = "com.thesetox.prepare"
+            artifactId = "core"
+            version = "1.0.0"
 
-                afterEvaluate {
-                    from(components["release"])
-                }
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
